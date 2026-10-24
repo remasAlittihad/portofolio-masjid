@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-ir-green: #059669;
+  --color-ir-green-light: #10b981;
+  --color-ir-green-dark: #047857;
+  --color-ir-gold: #d97706;
+  --color-ir-gold-light: #f59e0b;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-amiri), "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+::selection {
+  background: #10b981;
+  color: #042f2e;
+}
+
+/* Native select options mengikuti tema agar teks tidak putih di background putih. */
+.admin-select {
+  color: #18181b;
+  background-color: #ffffff;
+}
+.admin-select option {
+  color: #18181b;
+  background-color: #ffffff;
+}
+.dark .admin-select,
+.dark .admin-select option {
+  color: #f4f4f5;
+  background-color: #18181b;
+}
+
+/* ---- Islamic geometric pattern (repeating tile) ---- */
+.pattern-islamic {
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23059669' stroke-width='1'%3E%3Cpath d='M36 2 L70 36 L36 70 L2 36 Z'/%3E%3Cpath d='M12 12 H60 V60 H12 Z'/%3E%3Ccircle cx='36' cy='36' r='10'/%3E%3Cpath d='M36 12 L60 36 L36 60 L12 36 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+
+.pattern-islamic-gold {
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d97706' stroke-width='1'%3E%3Cpath d='M36 2 L70 36 L36 70 L2 36 Z'/%3E%3Cpath d='M12 12 H60 V60 H12 Z'/%3E%3Ccircle cx='36' cy='36' r='10'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 72px 72px;
+}
+
+/* ---- Frosted glass ---- */
+.glass {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.dark .glass {
+  background: rgba(24, 24, 27, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.dark .glass-strong {
+  background: rgba(24, 24, 27, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Text helpers ---- */
+.text-gradient {
+  background: linear-gradient(100deg, #059669 0%, #10b981 45%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-rule {
+  background: linear-gradient(90deg, transparent, #d97706, transparent);
+}
+
+/* ---- Animations ---- */
+@keyframes ir-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes ir-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes ir-rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: ir-float 6s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: ir-pulse-ring 2s ease-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: ir-rotate-slow 60s linear infinite;
+}
+
+/* ---- Scrollbars ---- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---- RTL ---- */
+html[dir="rtl"] .flip-x {
+  transform: scaleX(-1);
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-arabic);
+}
+
+/* ---- Reveal safety net ----
+   Setiap blok [data-reveal] di-SSR dengan opacity:0 lalu di-animasikan oleh
+   framer-motion setelah JS hydrate. Kalau JS tidak jalan sama sekali, halaman
+   jadi "polos" (hanya pola latar yang terlihat). Aturan di bawah ini menampilkan
+   konten kembali setelah 3 detik kalau tanda .ir-hydrated tidak pernah muncul. */
+html:not(.ir-hydrated) [data-reveal] {
+  animation: ir-reveal-fallback 0.45s ease-out 3s both;
+}
+
+/* Tanpa JavaScript: langsung tampil, tanpa jeda. */
+@media (scripting: none) {
+  html:not(.ir-hydrated) [data-reveal] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ir-reveal-fallback {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-float,
+  .animate-pulse-ring,
+  .animate-rotate-slow {
+    animation: none;
+  }
+}
