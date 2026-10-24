@@ -128,7 +128,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-zinc-900 dark:text-white sm:text-6xl lg:text-7xl">
+            <h1 className="text-[clamp(2.75rem,11vw,4.5rem)] font-extrabold leading-[1.05] tracking-tight text-zinc-900 dark:text-white">
               IRMA
               <br />
               <span className="text-gradient">Al-Ittihad</span>
@@ -149,18 +149,18 @@ export function Hero() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.3} className="flex w-full flex-wrap gap-3">
+          <Reveal delay={0.3} className="flex w-full flex-col gap-3 sm:flex-row">
             <button
               type="button"
               onClick={() => setJoinOpen(true)}
-              className="group flex items-center gap-2 rounded-full bg-linear-to-r from-emerald-600 to-emerald-500 px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition hover:from-emerald-700 hover:to-emerald-600 sm:text-base"
+              className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-600 to-emerald-500 px-5 py-3.5 text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition hover:from-emerald-700 hover:to-emerald-600 sm:w-auto sm:px-7 sm:text-base"
             >
               {t("common.joinNow")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <a
               href="#program"
-              className="flex items-center gap-2 rounded-full border-2 border-emerald-600/80 bg-white/70 px-7 py-3.5 text-sm font-bold text-emerald-700 backdrop-blur transition hover:bg-emerald-600 hover:text-white sm:text-base dark:border-emerald-400/60 dark:bg-zinc-900/60 dark:text-emerald-400 dark:hover:bg-emerald-500 dark:hover:text-white"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-emerald-600/80 bg-white/70 px-5 py-3.5 text-sm font-bold text-emerald-700 backdrop-blur transition hover:bg-emerald-600 hover:text-white sm:w-auto sm:px-7 sm:text-base dark:border-emerald-400/60 dark:bg-zinc-900/60 dark:text-emerald-400 dark:hover:bg-emerald-500 dark:hover:text-white"
             >
               {t("common.viewPrograms")}
               <Timer className="h-4 w-4" />
@@ -168,7 +168,7 @@ export function Hero() {
           </Reveal>
 
           {/* Stats */}
-          <Reveal delay={0.38} className="grid w-full max-w-lg grid-cols-3 gap-3">
+          <Reveal delay={0.38} className="grid w-full max-w-lg grid-cols-3 gap-2 sm:gap-3">
             {STATS.map(({ key, value, icon: Icon }) => (
               <div
                 key={key}

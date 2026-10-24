@@ -78,10 +78,10 @@ export function Header() {
   const nextPrayerLabel = next ? t(next.labelKey as TranslationKey) : "—";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50" style={{ height: "6rem" }}>
+    <header className="fixed inset-x-0 top-0 z-50" style={{ minHeight: "6rem" }}>
       {/* ---- Prayer times widget bar ---- */}
       <div className="bg-linear-to-r from-emerald-800 via-emerald-700 to-emerald-800 text-white dark:from-zinc-950 dark:via-emerald-950 dark:to-zinc-950">
-        <div className="mx-auto flex h-8 max-w-7xl items-center justify-between gap-3 px-4 text-[11px] sm:text-xs">
+        <div className="mx-auto flex min-h-8 max-w-7xl items-center justify-between gap-2 px-3 text-[10px] sm:gap-3 sm:px-4 sm:text-xs">
           <div className="flex min-w-0 items-center gap-2">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ir-green-light opacity-70" />
@@ -92,9 +92,9 @@ export function Header() {
               {schedule?.live === false ? " · offline" : ""}
             </span>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex min-w-0 items-center justify-end gap-1.5 sm:gap-3">
             <Clock className="hidden h-3.5 w-3.5 text-ir-gold-light sm:block" />
-            <span className="font-semibold text-white">
+            <span className="hidden font-semibold text-white sm:inline">
               {t("common.nextPrayer")}:
             </span>
             <span className="rounded-full bg-white/15 px-2 py-0.5 font-medium">
@@ -117,7 +117,7 @@ export function Header() {
             : "bg-white/70 dark:bg-zinc-950/60"
         } border-b border-emerald-900/10 backdrop-blur-xl dark:border-white/10`}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6">
+        <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
           {/* Logo */}
           <a href="#beranda" className="flex shrink-0 items-center gap-2.5">
             <Logo className="h-9 w-9" />

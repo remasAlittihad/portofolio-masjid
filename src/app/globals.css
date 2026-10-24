@@ -15,6 +15,34 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
 }
 
 section[id] {
