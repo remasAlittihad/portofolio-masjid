@@ -233,6 +233,7 @@ export function Header() {
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Menu"
               aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
               className="relative z-10 rounded-full border border-emerald-700/20 bg-white/70 p-2 text-emerald-800 xl:hidden dark:border-white/15 dark:bg-zinc-900/70 dark:text-emerald-400"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -248,7 +249,8 @@ export function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="overflow-hidden border-t border-emerald-900/10 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 xl:hidden"
+              id="mobile-navigation"
+              className={`relative z-20 overflow-hidden border-t border-emerald-900/10 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 xl:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}
             >
               <ul className="mx-auto grid max-h-[70vh] max-w-7xl gap-1 overflow-y-auto p-4">
                 {NAV_ITEMS.map(({ id, key }) => (
