@@ -158,7 +158,7 @@ export function Header() {
           </ul>
 
           {/* Actions */}
-          <div className={`ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 xl:gap-2 ${lang === "ar" ? "mr-5 sm:mr-3 max-xl:-translate-x-4" : ""}`}>
+          <div className={`ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 xl:gap-2 ${lang === "ar" ? "mr-3 sm:mr-2 max-xl:-translate-x-2" : ""}`}>
             {/* Language switcher */}
             <div className="relative">
               <button
