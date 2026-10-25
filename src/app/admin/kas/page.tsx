@@ -49,5 +49,5 @@ function KasLoading() {
 
 function Summary({ icon: Icon, label, value, color }: { icon: typeof Wallet; label: string; value: string; color: "emerald" | "blue" | "rose" }) {
   const styles = { emerald: "text-emerald-600 bg-emerald-50", blue: "text-blue-600 bg-blue-50", rose: "text-rose-600 bg-rose-50" };
-  return <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${styles[color]}`}><Icon className="h-5 w-5" /></div><p className="text-xs font-bold uppercase tracking-wide text-zinc-500">{label}</p><p className="mt-1 text-xl font-black">{value}</p></div>;
+  return <div className="min-w-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${styles[color]}`}><Icon className="h-5 w-5" /></div><p className="text-xs font-bold uppercase tracking-wide text-zinc-500">{label}</p><p className="mt-1 break-all text-lg font-black leading-tight sm:text-xl">{value}</p></div>;
 }

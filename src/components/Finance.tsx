@@ -100,12 +100,12 @@ export function Finance() {
         />
 
         {/* Summary cards */}
-        <div className="grid gap-5 sm:grid-cols-3">
+        <div className="grid min-w-0 gap-5 sm:grid-cols-3">
           {cards.map(({ label, value, icon: Icon, accent, text, chip }, i) => (
             <Reveal key={label} delay={i * 0.08}>
               <motion.article
                 whileHover={{ y: -8 }}
-                className="relative overflow-hidden rounded-xl border border-zinc-200/80 bg-white p-6 shadow-md transition hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-900"
+                className="relative min-w-0 overflow-hidden rounded-xl border border-zinc-200/80 bg-white p-5 shadow-md transition hover:shadow-2xl sm:p-6 dark:border-zinc-800 dark:bg-zinc-900"
               >
                 <div className={`absolute inset-x-0 top-0 h-1.5 bg-linear-to-r ${accent}`} />
                 <div className="flex items-start justify-between gap-3">
@@ -119,7 +119,7 @@ export function Finance() {
                     {logs ? "IDR" : "…"}
                   </span>
                 </div>
-                <div className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900 tabular-nums dark:text-white">
+                <div className="mt-4 break-all text-xl font-extrabold leading-tight tracking-tight text-zinc-900 tabular-nums sm:text-2xl dark:text-white">
                   {logs ? rupiah(value) : "—"}
                 </div>
                 <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
