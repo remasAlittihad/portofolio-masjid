@@ -31,7 +31,7 @@ const CONTACT_ITEMS = [
     key: "contact.emailLabel" as const,
     value: "irma.alittihad1998@gmail.com",
     icon: Send,
-    href: "irma.alittihad1998@gmail.com",
+    href: "mailto:irma.alittihad1998@gmail.com",
   },
 ];
 
