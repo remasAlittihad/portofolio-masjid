@@ -102,24 +102,24 @@ export function Finance() {
         {/* Summary cards */}
         <div className="grid min-w-0 gap-5 sm:grid-cols-3">
           {cards.map(({ label, value, icon: Icon, accent, text, chip }, i) => (
-            <Reveal key={label} delay={i * 0.08}>
+            <Reveal key={label} delay={i * 0.08} className="w-full min-w-0 max-w-full">
               <motion.article
                 whileHover={{ y: -8 }}
-                className="relative min-w-0 overflow-hidden rounded-xl border border-zinc-200/80 bg-white p-5 shadow-md transition hover:shadow-2xl sm:p-6 dark:border-zinc-800 dark:bg-zinc-900"
+                className="relative w-full min-w-0 max-w-full overflow-hidden rounded-xl border border-zinc-200/80 bg-white p-4 shadow-md transition hover:shadow-2xl sm:p-6 dark:border-zinc-800 dark:bg-zinc-900"
               >
                 <div className={`absolute inset-x-0 top-0 h-1.5 bg-linear-to-r ${accent}`} />
-                <div className="flex items-start justify-between gap-3">
-                  <span className={`flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br ${accent} text-white shadow-lg`}>
+                <div className="flex min-w-0 items-start justify-between gap-2 sm:gap-3">
+                  <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-br ${accent} text-white shadow-lg sm:h-12 sm:w-12`}>
                     <Icon className="h-6 w-6" />
                   </span>
                   <span
-                    className={`inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold dark:bg-zinc-800 ${text}`}
+                    className={`inline-flex min-w-0 max-w-[55%] items-center gap-1 overflow-hidden rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-bold dark:bg-zinc-800 ${text}`}
                   >
                     {chip}
-                    {logs ? "IDR" : "…"}
+                    <span className="truncate">{logs ? "IDR" : "…"}</span>
                   </span>
                 </div>
-                <div className="mt-4 break-all text-xl font-extrabold leading-tight tracking-tight text-zinc-900 tabular-nums sm:text-2xl dark:text-white">
+                <div className="mt-4 break-words text-lg font-extrabold leading-tight tracking-tight text-zinc-900 tabular-nums sm:text-2xl dark:text-white">
                   {logs ? rupiah(value) : "—"}
                 </div>
                 <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
