@@ -27,6 +27,14 @@ export const metadata: Metadata = {
     "organisasi pemuda islam",
     "kegiatan remaja masjid",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+  },
   openGraph: {
     title: "IRMA Al-Ittihad",
     description: "Bukan Sekedar Muda, Tapi Juga Bermakna",
