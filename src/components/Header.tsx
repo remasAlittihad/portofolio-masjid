@@ -40,6 +40,21 @@ export function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("beranda");
 
+  // A refresh should start from the home section instead of preserving the
+  // hash from the section that was open before the refresh.
+  useEffect(() => {
+    const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    const isReload = navigation?.type === "reload";
+
+    if (isReload && window.location.hash) {
+      window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      window.requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        setActiveSection("beranda");
+      });
+    }
+  }, []);
+
   // Track scroll state for the frosted header
   useEffect(() => {
     let frame = 0;
