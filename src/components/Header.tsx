@@ -189,7 +189,7 @@ export function Header() {
 
       {/* ---- Main navigation ---- */}
       <nav
-        className={`transition-all duration-300 ${
+        className={`relative transition-all duration-300 ${
           scrolled
             ? "glass-strong shadow-lg shadow-emerald-900/5"
             : "bg-white/70 dark:bg-zinc-950/60"
@@ -318,16 +318,14 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.28, ease: "easeInOut" }}
+        {/* Mobile menu. Render it only while open so an exiting animation cannot
+            leave an invisible layer over the links or intercept the next tap. */}
+        {mobileOpen && (
+            <div
               id="mobile-navigation"
-              className={`relative z-20 overflow-hidden border-t border-emerald-900/10 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 xl:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+              role="navigation"
+              aria-label="Navigasi mobile"
+              className="relative z-[60] overflow-hidden border-t border-emerald-900/10 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 xl:hidden"
             >
               <ul className="mx-auto grid max-h-[70vh] max-w-7xl gap-1 overflow-y-auto p-4">
                 {NAV_ITEMS.map(({ id, key }) => (
@@ -359,9 +357,8 @@ export function Header() {
                   </a>
                 </li>
               </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+        )}
       </nav>
     </header>
   );
