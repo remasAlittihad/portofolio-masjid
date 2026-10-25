@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Clock,
@@ -40,19 +40,62 @@ export function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("beranda");
 
-  // A refresh should start from the home section instead of preserving the
-  // hash from the section that was open before the refresh.
-  useEffect(() => {
-    const navigation = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
-    const isReload = navigation?.type === "reload";
+  // Let normal hash navigation and Back/Forward keep their native behavior.
+  // Only disable the browser's scroll restoration for an actual reload, then
+  // restore the default so later history navigation is not affected.
+  useLayoutEffect(() => {
+    const navigation = performance.getEntriesByType("navigation")[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    const isReload = navigation
+      ? navigation.type === "reload"
+      : performance.navigation.type === 1;
 
-    if (isReload && window.location.hash) {
-      window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
-      window.requestAnimationFrame(() => {
-        window.scrollTo(0, 0);
-        setActiveSection("beranda");
-      });
-    }
+    if (!isReload) return;
+
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
+    // Some browsers apply their saved position after the first layout. Do one
+    // pre-paint correction as well, without changing the URL hash/section.
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      window.history.scrollRestoration = previousRestoration;
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  // Restore the section represented by the URL hash after a normal direct
+  // navigation. The browser can try to restore the scroll position before the
+  // sections finish rendering, so do it once more after the first paint.
+  useEffect(() => {
+    const navigation = performance.getEntriesByType("navigation")[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    const isReload = navigation
+      ? navigation.type === "reload"
+      : performance.navigation.type === 1;
+    const hash = window.location.hash.slice(1);
+    if (!hash || isReload) return;
+
+    const restoreSection = () => {
+      const section = document.getElementById(hash);
+      if (!section) return;
+
+      const headerOffset = 96;
+      const top = section.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo(0, top);
+      setActiveSection(hash);
+    };
+
+    const frame = window.requestAnimationFrame(restoreSection);
+    const timeout = window.setTimeout(restoreSection, 150);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+    };
   }, []);
 
   // Track scroll state for the frosted header

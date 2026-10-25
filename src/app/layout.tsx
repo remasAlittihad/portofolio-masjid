@@ -52,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${jakarta.variable} ${amiri.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-white font-sans text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+      <body className="min-h-full bg-zinc-100 font-sans text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

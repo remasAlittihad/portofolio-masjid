@@ -18,7 +18,7 @@ export function About() {
   return (
     <section id="tentang" className="relative scroll-mt-28 overflow-hidden py-20 sm:py-24">
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-emerald-50/60 to-white dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-100 via-emerald-50/70 to-zinc-100 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900"
         aria-hidden="true"
       />
       <div

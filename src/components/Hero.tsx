@@ -101,7 +101,7 @@ export function Hero() {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-white pt-24 dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-900"
+      className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-zinc-100 to-zinc-100 pt-24 dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-900"
     >
       {/* Decorative Islamic background */}
       <div className="pattern-islamic absolute inset-0 opacity-[0.35] dark:opacity-[0.12]" aria-hidden="true" />

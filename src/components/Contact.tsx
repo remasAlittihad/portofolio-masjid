@@ -40,7 +40,7 @@ export function Contact() {
 
   return (
     <section id="kontak" className="relative overflow-hidden py-20 sm:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white to-emerald-50/70 dark:from-zinc-900 dark:to-zinc-950" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-100 to-emerald-50/80 dark:from-zinc-900 dark:to-zinc-950" aria-hidden="true" />
       <div className="pattern-islamic pointer-events-none absolute inset-0 opacity-[0.14] dark:opacity-[0.07]" aria-hidden="true" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4">
