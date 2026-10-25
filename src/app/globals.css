@@ -208,6 +208,25 @@ html:not(.ir-hydrated) [data-reveal] {
   }
 }
 
+@media (max-width: 640px) {
+  /* Blur is expensive to repaint while scrolling on budget devices. Keep the
+     same translucent appearance with a solid fallback on small screens. */
+  .glass,
+  .glass-strong,
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .animate-float,
+  .animate-pulse-ring,
+  .animate-rotate-slow {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

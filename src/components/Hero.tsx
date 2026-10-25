@@ -36,13 +36,19 @@ export function Hero() {
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [joinOpen, setJoinOpen] = useState(false);
   const tagline = t("common.tagline");
-  const [typedTagline, setTypedTagline] = useState("");
+  const [typedTagline, setTypedTagline] = useState(tagline);
 
   useEffect(() => {
+    // Typing effects are decorative and create frequent renders. Keep the
+    // static tagline on reduced-motion / constrained devices.
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const constrained = window.matchMedia("(max-width: 640px)").matches &&
+      (navigator.hardwareConcurrency ?? 4) <= 4;
+    if (reduced || constrained) return;
+
     let index = 0;
     let deleting = false;
     let timeout: number;
-
     const tick = () => {
       setTypedTagline(tagline.slice(0, index));
       if (!deleting && index < tagline.length) {
@@ -59,7 +65,6 @@ export function Hero() {
         timeout = window.setTimeout(tick, 500);
       }
     };
-
     tick();
     return () => window.clearTimeout(timeout);
   }, [tagline]);
@@ -192,8 +197,8 @@ export function Hero() {
           <Reveal delay={0.12}>
             <motion.div
               className="glass relative overflow-hidden rounded-xl p-6 shadow-xl shadow-emerald-900/10"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              // Static on mobile: an infinite animation here keeps the main
+              // thread active throughout scrolling on low-end phones.
             >
               <div className="pattern-islamic-gold absolute inset-0 opacity-15" aria-hidden="true" />
               <div className="relative">

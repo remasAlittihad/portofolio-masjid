@@ -47,13 +47,33 @@ export function PrayerProvider({ children }: { children: ReactNode }) {
     };
   }, [city, country]);
 
-  // Start the ticker only on the client to keep SSR output deterministic
+  // Start the ticker only on the client. Do not spend a timer tick while the
+  // tab is hidden: this avoids needless React renders when the page is in the
+  // background (especially noticeable on mobile browsers).
   useEffect(() => {
-    const initial = window.setTimeout(() => setNow(new Date()), 0);
-    const id = window.setInterval(() => setNow(new Date()), 1000);
+    let id: number | undefined;
+    const tick = () => setNow(new Date());
+    const start = () => {
+      if (document.visibilityState === "visible" && id === undefined) {
+        tick();
+        id = window.setInterval(tick, 1000);
+      }
+    };
+    const stop = () => {
+      if (id !== undefined) {
+        window.clearInterval(id);
+        id = undefined;
+      }
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") start();
+      else stop();
+    };
+    start();
+    document.addEventListener("visibilitychange", onVisibilityChange);
     return () => {
-      window.clearTimeout(initial);
-      window.clearInterval(id);
+      stop();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 
