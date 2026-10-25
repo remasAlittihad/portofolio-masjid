@@ -33,6 +33,7 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
+  const isAdminRoot = path === "/admin";
   const isLoginPath = path === "/admin/login";
 
   /** Buat respons lanjutan yang tetap membawa header noindex. */
@@ -40,6 +41,13 @@ export async function proxy(request: NextRequest) {
     res.headers.set("X-Robots-Tag", "noindex, nofollow");
     return res;
   };
+
+  // `/admin` sengaja bukan pintu masuk login maupun dashboard. Biarkan
+  // halaman route tersebut merender Not Found, tanpa mengganggu route admin
+  // lain atau alur autentikasi yang ada.
+  if (isAdminRoot) {
+    return withNoindex(NextResponse.next({ request }));
+  }
 
   if (!user && !isLoginPath) {
     const url = request.nextUrl.clone();
@@ -49,7 +57,7 @@ export async function proxy(request: NextRequest) {
 
   if (user && isLoginPath) {
     const url = request.nextUrl.clone();
-    url.pathname = "/admin";
+    url.pathname = "/admin/dashboard";
     return withNoindex(NextResponse.redirect(url));
   }
 

@@ -47,7 +47,7 @@ export async function loginAction(
     return { message: "Email atau kata sandi salah." };
   }
 
-  redirect("/admin");
+  redirect("/admin/dashboard");
 }
 
 export async function logoutAction(): Promise<void> {
