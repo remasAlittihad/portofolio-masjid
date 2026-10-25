@@ -247,7 +247,7 @@ export function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="overflow-hidden border-t border-emerald-900/10 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 lg:hidden"
+              className="overflow-hidden border-t border-emerald-900/10 bg-white/95 backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/95 xl:hidden"
             >
               <ul className="mx-auto grid max-h-[70vh] max-w-7xl gap-1 overflow-y-auto p-4">
                 {NAV_ITEMS.map(({ id, key }) => (
