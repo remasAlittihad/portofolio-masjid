@@ -101,25 +101,42 @@ export function Hero() {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden bg-[#f7f5ef] pt-24 dark:bg-[#12201d]"
+      className="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-white pt-24 dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-900"
     >
-      <div className="absolute inset-y-0 end-0 w-[42%] bg-[#e6eee8] dark:bg-[#19352e]" aria-hidden="true" />
+      {/* Decorative Islamic background */}
+      <div className="pattern-islamic absolute inset-0 opacity-[0.35] dark:opacity-[0.12]" aria-hidden="true" />
+      <div
+        className="absolute -top-32 -start-32 h-96 w-96 rounded-full bg-emerald-400/25 blur-3xl dark:bg-emerald-600/15"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute -end-24 top-40 h-80 w-80 rounded-full bg-ir-gold/20 blur-3xl dark:bg-ir-gold/10"
+        aria-hidden="true"
+      />
+      <Star
+        className="animate-rotate-slow absolute end-[8%] top-28 hidden h-16 w-16 text-emerald-500/30 md:block"
+        aria-hidden="true"
+      />
+      <Star
+        className="animate-float absolute start-[6%] bottom-40 hidden h-10 w-10 text-ir-gold/40 md:block"
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-10 lg:grid-cols-12 lg:gap-12 lg:pb-24 lg:pt-16">
         {/* ---- Copy ---- */}
         <div className="flex flex-col items-start gap-6 lg:col-span-7">
           <Reveal>
-            <span className="inline-flex items-center gap-2 border-s-2 border-ir-gold px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-ir-green-dark dark:text-ir-gold-light">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-600/30 bg-white/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-emerald-700 shadow-sm backdrop-blur dark:border-emerald-400/30 dark:bg-zinc-900/70 dark:text-emerald-400">
               <Sparkles className="h-3.5 w-3.5 text-ir-gold" />
               {t("hero.badge")}
             </span>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h1 className="max-w-3xl text-[clamp(2.75rem,9vw,6.4rem)] font-extrabold leading-[0.98] tracking-[-0.06em] text-ir-green-dark dark:text-white">
+            <h1 className="text-[clamp(2.75rem,11vw,4.5rem)] font-extrabold leading-[1.05] tracking-tight text-zinc-900 dark:text-white">
               IRMA
               <br />
-              <span className="text-ir-gold">Al-Ittihad</span>
+              <span className="text-gradient">Al-Ittihad</span>
             </h1>
           </Reveal>
 
@@ -141,14 +158,14 @@ export function Hero() {
             <button
               type="button"
               onClick={() => setJoinOpen(true)}
-              className="group inline-flex min-h-12 w-full items-center justify-center gap-2 bg-ir-green-dark px-5 py-3.5 text-sm font-bold text-white transition hover:bg-ir-green sm:w-auto sm:px-7 sm:text-base"
+              className="group inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-600 to-emerald-500 px-5 py-3.5 text-sm font-bold text-white shadow-xl shadow-emerald-600/30 transition hover:from-emerald-700 hover:to-emerald-600 sm:w-auto sm:px-7 sm:text-base"
             >
               {t("common.joinNow")}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <a
               href="#program"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2 border border-ir-green-dark/40 px-5 py-3.5 text-sm font-bold text-ir-green-dark transition hover:bg-ir-green-dark hover:text-white sm:w-auto sm:px-7 sm:text-base dark:border-ir-gold-light/50 dark:text-ir-gold-light"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-emerald-600/80 bg-white/70 px-5 py-3.5 text-sm font-bold text-emerald-700 backdrop-blur transition hover:bg-emerald-600 hover:text-white sm:w-auto sm:px-7 sm:text-base dark:border-emerald-400/60 dark:bg-zinc-900/60 dark:text-emerald-400 dark:hover:bg-emerald-500 dark:hover:text-white"
             >
               {t("common.viewPrograms")}
               <Timer className="h-4 w-4" />
