@@ -118,7 +118,7 @@ export function Header() {
             : "bg-white/70 dark:bg-zinc-950/60"
         } border-b border-emerald-900/10 backdrop-blur-xl dark:border-white/10`}
       >
-        <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
+        <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6" dir={lang === "ar" ? "rtl" : "ltr"}>
           {/* Logo */}
           <a href="#beranda" className="flex shrink-0 items-center gap-2.5">
             <Logo className="h-9 w-9" />
@@ -133,7 +133,7 @@ export function Header() {
           </a>
 
           {/* Desktop links */}
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:gap-1 xl:flex">
+          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:gap-1 xl:flex" dir={lang === "ar" ? "rtl" : "ltr"}>
             {NAV_ITEMS.map(({ id, key }) => (
               <li key={id}>
                 <a
@@ -169,7 +169,7 @@ export function Header() {
                 className="flex items-center gap-1 rounded-full border border-emerald-700/20 bg-white/70 px-2.5 py-2 text-xs font-bold text-emerald-800 transition hover:border-emerald-600 hover:bg-emerald-600 hover:text-white dark:border-white/15 dark:bg-zinc-900/70 dark:text-emerald-400 sm:px-3"
               >
                 <Languages className="h-4 w-4" />
-                <span className="hidden sm:inline">{lang.toUpperCase()}</span>
+                <span className="hidden min-w-6 text-center sm:inline">{lang.toUpperCase()}</span>
               </button>
               <AnimatePresence>
                 {langOpen && (
@@ -178,7 +178,7 @@ export function Header() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 6, scale: 0.96 }}
                     transition={{ duration: 0.16 }}
-                    className="absolute end-0 top-12 w-44 overflow-hidden rounded-xl border border-emerald-900/10 bg-white py-1.5 shadow-xl dark:border-white/10 dark:bg-zinc-900"
+                    className="absolute end-0 top-[calc(100%+0.5rem)] z-50 w-44 overflow-hidden rounded-xl border border-emerald-900/10 bg-white py-1.5 text-start shadow-xl dark:border-white/10 dark:bg-zinc-900" dir={lang === "ar" ? "rtl" : "ltr"}
                   >
                     {(Object.keys(LANGUAGE_LABELS) as Language[]).map((code) => (
                       <li key={code}>
@@ -188,7 +188,7 @@ export function Header() {
                             setLang(code);
                             setLangOpen(false);
                           }}
-                          className={`flex w-full items-center justify-between px-3.5 py-2 text-sm font-medium transition-colors ${
+                          className={`flex w-full items-center justify-between gap-3 px-3.5 py-2 text-start text-sm font-medium transition-colors ${
                             lang === code
                               ? "bg-emerald-600 text-white"
                               : "text-zinc-700 hover:bg-emerald-50 dark:text-zinc-200 dark:hover:bg-zinc-800"
