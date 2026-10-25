@@ -29,13 +29,13 @@ async function AdminKasLoader() {
   return (
     <div className="flex flex-col gap-6">
       <Link href="/admin" className="inline-flex w-fit items-center gap-2 text-sm font-bold text-zinc-500 transition hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"><ArrowLeft className="h-4 w-4" />Kembali ke Dashboard Admin</Link>
-      <div><h1 className="text-2xl font-extrabold">Kas Masjid</h1><p className="mt-1 text-sm text-zinc-500">Laporan pemasukan dan pengeluaran kas IRMA Al-Ittihad.</p></div>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="min-w-0"><h1 className="text-2xl font-extrabold">Kas Masjid</h1><p className="mt-1 text-sm text-zinc-500">Laporan pemasukan dan pengeluaran kas IRMA Al-Ittihad.</p></div>
+      <div className="grid min-w-0 gap-4 sm:grid-cols-3">
         <Summary icon={Wallet} label="Saldo Kas" value={format(income - expense)} color="emerald" />
         <Summary icon={TrendingUp} label="Total Pemasukan" value={format(income)} color="blue" />
         <Summary icon={TrendingDown} label="Total Pengeluaran" value={format(expense)} color="rose" />
       </div>
-      <section className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+      <section className="overflow-visible rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
         <div className="border-b border-zinc-200 p-5 dark:border-zinc-800"><h2 className="font-extrabold">Riwayat Transaksi</h2></div>
         {error ? <p className="p-5 text-sm text-rose-600">Gagal mengambil data kas: {error.message}</p> : <div className="p-5"><KasManager items={logs} /></div>}
       </section>
