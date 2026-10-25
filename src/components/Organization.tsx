@@ -149,7 +149,7 @@ export function Organization() {
 
         {/* Cards */}
         {!people ? (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
             {Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
@@ -162,7 +162,7 @@ export function Organization() {
             {t("common.noResults")}
           </p>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
             {filtered.map((person, i) => {
               const style = ROLE_STYLES[person.role];
               const RoleIcon = style.icon;

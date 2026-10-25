@@ -232,7 +232,7 @@ export function Header() {
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Menu"
               aria-expanded={mobileOpen}
-              className="rounded-full border border-emerald-700/20 bg-white/70 p-2 text-emerald-800 lg:hidden dark:border-white/15 dark:bg-zinc-900/70 dark:text-emerald-400"
+              className="relative z-10 rounded-full border border-emerald-700/20 bg-white/70 p-2 text-emerald-800 xl:hidden dark:border-white/15 dark:bg-zinc-900/70 dark:text-emerald-400"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
