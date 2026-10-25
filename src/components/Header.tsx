@@ -77,13 +77,6 @@ export function Header() {
 
   const nextPrayerLabel = next ? t(next.labelKey as TranslationKey) : "—";
 
-  const handleMobileNavigation = (id: string) => {
-    setMobileOpen(false);
-    window.history.replaceState(null, "", `#${id}`);
-    requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50" style={{ minHeight: "6rem" }}>
@@ -262,10 +255,7 @@ export function Header() {
                   <li key={id}>
                     <a
                       href={`#${id}`}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        handleMobileNavigation(id);
-                      }}
+                      onClick={() => setMobileOpen(false)}
                       className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition ${
                         activeSection === id
                           ? "bg-emerald-600 text-white"
@@ -282,10 +272,7 @@ export function Header() {
                 <li>
                   <a
                     href="#kontak"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      handleMobileNavigation("kontak");
-                    }}
+                    onClick={() => setMobileOpen(false)}
                     className="mt-1 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-600 to-emerald-500 px-4 py-3 text-sm font-bold text-white"
                   >
                     <Sparkles className="h-4 w-4" />

@@ -98,20 +98,20 @@ export function About() {
         </div>
 
         {/* Values */}
-        <div className="grid gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4">
           {VALUES.map(({ key, desc, icon: Icon }, i) => (
             <Reveal key={key} delay={0.08 * i}>
               <motion.div
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="glass flex flex-col items-center gap-2 rounded-xl p-6 text-center transition"
+                className="glass flex h-full flex-col items-center gap-1.5 rounded-xl p-3 text-center transition sm:gap-2 sm:p-6"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400">
-                  <Icon className="h-6 w-6" />
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-600/10 text-emerald-700 sm:h-12 sm:w-12 sm:rounded-xl dark:bg-emerald-500/15 dark:text-emerald-400">
+                  <Icon className="h-4 w-4 sm:h-6 sm:w-6" />
                 </span>
-                <h4 className="text-lg font-extrabold text-zinc-900 dark:text-white">
+                <h4 className="text-xs font-extrabold text-zinc-900 sm:text-lg dark:text-white">
                   {t(key)}
                 </h4>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">{t(desc)}</p>
+                <p className="text-[10px] leading-tight text-zinc-500 sm:text-sm sm:leading-normal dark:text-zinc-400">{t(desc)}</p>
               </motion.div>
             </Reveal>
           ))}
