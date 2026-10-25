@@ -286,7 +286,7 @@ export function Header() {
               type="button"
               onClick={toggleTheme}
               aria-label={t("common.toggleTheme")}
-              className="rounded-full border border-emerald-700/20 bg-white/70 p-2 text-emerald-800 transition hover:border-emerald-600 hover:bg-emerald-600 hover:text-white dark:border-white/15 dark:bg-zinc-900/70 dark:text-emerald-400"
+              className="hidden rounded-full border border-emerald-700/20 bg-white/70 p-2 text-emerald-800 transition hover:border-emerald-600 hover:bg-emerald-600 hover:text-white dark:border-white/15 dark:bg-zinc-900/70 dark:text-emerald-400 xl:block"
             >
               {resolvedTheme === "dark" ? (
                 <Sun className="h-4 w-4" />
@@ -355,6 +355,23 @@ export function Header() {
                     <Sparkles className="h-4 w-4" />
                     {t("common.joinNow")}
                   </a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={toggleTheme}
+                    aria-label={t("common.toggleTheme")}
+                    className="flex min-h-12 w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-zinc-700 transition hover:bg-emerald-50 dark:text-zinc-200 dark:hover:bg-zinc-900"
+                  >
+                    <span className="flex items-center gap-3">
+                      {resolvedTheme === "dark" ? (
+                        <Sun className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                      ) : (
+                        <Moon className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                      )}
+                      {t("common.toggleTheme")}
+                    </span>
+                  </button>
                 </li>
               </ul>
             </div>
