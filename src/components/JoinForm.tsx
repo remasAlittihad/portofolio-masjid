@@ -73,8 +73,9 @@ export function JoinForm({ onSubmitted, idPrefix = "join", compact }: JoinFormPr
       });
 
       if (error) {
+        // Database persistence is best-effort; the primary action is opening WhatsApp.
+        // Do not block the user when Supabase is unavailable or the table is not configured.
         console.error("Gagal menyimpan data pendaftar ke Supabase:", error);
-        return;
       }
     }
 

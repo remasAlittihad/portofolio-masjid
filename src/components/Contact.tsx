@@ -40,8 +40,8 @@ export function Contact() {
 
   return (
     <section id="kontak" className="relative overflow-hidden py-20 sm:py-24">
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-emerald-50/70 dark:from-zinc-900 dark:to-zinc-950" aria-hidden="true" />
-      <div className="pattern-islamic absolute inset-0 opacity-[0.14] dark:opacity-[0.07]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white to-emerald-50/70 dark:from-zinc-900 dark:to-zinc-950" aria-hidden="true" />
+      <div className="pattern-islamic pointer-events-none absolute inset-0 opacity-[0.14] dark:opacity-[0.07]" aria-hidden="true" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4">
         <SectionHeading
@@ -148,7 +148,7 @@ export function Contact() {
         {/* Bottom banner */}
         <Reveal>
           <div className="relative overflow-hidden rounded-xl bg-linear-to-r from-emerald-700 via-emerald-600 to-emerald-700 px-6 py-8 text-center shadow-2xl shadow-emerald-900/20 sm:px-10">
-            <div className="pattern-islamic absolute inset-0 opacity-15" aria-hidden="true" />
+            <div className="pattern-islamic pointer-events-none absolute inset-0 opacity-15" aria-hidden="true" />
             <div className="relative flex flex-col items-center gap-4">
               <h3 className="max-w-2xl text-2xl font-extrabold text-white sm:text-3xl">
                 {t("common.tagline")}
