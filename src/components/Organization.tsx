@@ -176,13 +176,13 @@ export function Organization() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.45, delay: Math.min(i * 0.05, 0.4) }}
                   whileHover={{ y: -8 }}
-                  className={`group flex flex-col items-center rounded-xl border border-white/60 bg-white p-5 text-center shadow-md transition hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-900 ${style.ring}`}
+                  className={`group flex flex-col items-center rounded-lg border border-white/60 bg-white p-5 text-center shadow-md transition hover:shadow-2xl dark:border-zinc-800 dark:bg-zinc-900 ${style.ring}`}
                 >
                   <div className="relative">
                     <PersonPhoto
                       src={person.image_url}
                       alt={person.name}
-                      boxClassName="h-24 w-24 rounded-xl transition group-hover:scale-105"
+                      boxClassName="h-24 w-24 rounded-lg transition group-hover:scale-105"
                       imageClassName="object-cover"
                     />
                     <span
@@ -231,7 +231,7 @@ export function Organization() {
               <PersonPhoto
                 src={selected.image_url}
                 alt={selected.name}
-                boxClassName="h-28 w-28 rounded-xl"
+                boxClassName="h-28 w-28 rounded-lg"
                 imageClassName="object-cover ring-4 ring-emerald-500/40"
                 width={112}
                 height={112}
