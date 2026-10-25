@@ -15,7 +15,6 @@ const FOOTER_LINKS: { id: string; key: TranslationKey }[] = [
   { id: "program", key: "nav.programs" },
   { id: "galeri", key: "nav.gallery" },
   { id: "jadwal", key: "nav.schedule" },
-  { id: "kas", key: "nav.finance" },
   { id: "kontak", key: "nav.contact" },
 ];
 
