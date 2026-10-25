@@ -16,16 +16,7 @@ export function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="tentang" className="relative scroll-mt-28 overflow-hidden py-20 sm:py-24">
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-emerald-50/60 to-white dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900"
-        aria-hidden="true"
-      />
-      <div
-        className="pattern-islamic pointer-events-none absolute inset-0 opacity-[0.18] dark:opacity-[0.08]"
-        aria-hidden="true"
-      />
-
+    <section id="tentang" className="section-rule relative scroll-mt-28 overflow-hidden bg-[#f7f5ef] py-24 sm:py-32 dark:bg-[#12201d]">
       <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-4">
         <SectionHeading
           label={t("about.label")}
@@ -38,7 +29,7 @@ export function About() {
           <Reveal>
             <motion.article
               whileHover={{ y: -6 }}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-emerald-600/20 bg-white p-6 shadow-lg shadow-emerald-900/5 transition-shadow hover:shadow-xl sm:p-7 dark:border-emerald-400/15 dark:bg-zinc-900"
+              className="group relative flex h-full flex-col overflow-hidden border-t-2 border-ir-green-dark bg-white p-6 transition-shadow hover:shadow-xl sm:p-7 dark:bg-[#19352e]"
             >
               <div className="absolute -end-10 -top-10 h-40 w-40 rounded-full bg-emerald-500/10 blur-2xl transition group-hover:bg-emerald-500/20" />
               <div className="relative">
@@ -65,7 +56,7 @@ export function About() {
           <Reveal delay={0.12}>
             <motion.article
               whileHover={{ y: -6 }}
-              className="relative h-full overflow-hidden rounded-xl border border-emerald-600/20 bg-white p-6 shadow-lg shadow-emerald-900/5 transition-shadow hover:shadow-xl sm:p-7 dark:border-emerald-400/15 dark:bg-zinc-900"
+              className="relative h-full overflow-hidden border-t-2 border-ir-gold bg-white p-6 transition-shadow hover:shadow-xl sm:p-7 dark:bg-[#19352e]"
             >
               <div className="absolute -start-10 -top-10 h-40 w-40 rounded-full bg-ir-gold/10 blur-2xl" />
               <div className="relative">

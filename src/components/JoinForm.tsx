@@ -166,7 +166,7 @@ export function JoinForm({ onSubmitted, idPrefix = "join", compact }: JoinFormPr
         type="submit"
         className="group flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-600 to-emerald-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-600/30 transition hover:from-emerald-700 hover:to-emerald-600 hover:shadow-xl"
       >
-        <MessageCircle className="h-5 w-5 transition-transform group-hover:scale-110" />
+        <MessageCircle className="h-5 w-5 transition-transform group-hover:opacity-85" />
         {t("form.submit")}
         <Send className="h-4 w-4 flip-x transition-transform group-hover:translate-x-0.5" />
       </button>

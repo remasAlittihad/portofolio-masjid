@@ -3,11 +3,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-ir-green: #059669;
-  --color-ir-green-light: #10b981;
-  --color-ir-green-dark: #047857;
-  --color-ir-gold: #d97706;
-  --color-ir-gold-light: #f59e0b;
+  --color-ir-green: #174c43;
+  --color-ir-green-light: #2f7564;
+  --color-ir-green-dark: #103a34;
+  --color-ir-gold: #b47a3c;
+  --color-ir-gold-light: #d1a15e;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-arabic: var(--font-amiri), "Times New Roman", serif;
 }
@@ -21,6 +21,26 @@ html {
 body {
   min-width: 320px;
   overflow-x: clip;
+  background: #f7f5ef;
+  color: #1f2926;
+}
+
+.dark body {
+  background: #12201d;
+  color: #edf1ec;
+}
+
+/* Editorial surface: quiet, tactile, and deliberately less ornamental. */
+.section-rule {
+  border-top: 1px solid rgba(23, 76, 67, 0.18);
+}
+
+.editorial-label {
+  color: #b47a3c;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 *,
@@ -69,6 +89,7 @@ section[id] {
   background-color: #18181b;
 }
 
+/* Legacy pattern kept for admin/older surfaces; the public page avoids decorative tiling. */
 /* ---- Islamic geometric pattern (repeating tile) ---- */
 .pattern-islamic {
   background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23059669' stroke-width='1'%3E%3Cpath d='M36 2 L70 36 L36 70 L2 36 Z'/%3E%3Cpath d='M12 12 H60 V60 H12 Z'/%3E%3Ccircle cx='36' cy='36' r='10'/%3E%3Cpath d='M36 12 L60 36 L36 60 L12 36 Z'/%3E%3C/g%3E%3C/svg%3E");

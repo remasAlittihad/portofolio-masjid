@@ -12,15 +12,15 @@ interface RevealProps {
 }
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 /** Scroll-reveal wrapper used across all sections. */
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 0,
   className,
   once = true,
 }: RevealProps) {
@@ -28,13 +28,13 @@ export function Reveal({
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y },
-        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
       }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once, amount: 0.2 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 0.61, 0.36, 1] }}
+      transition={{ duration: 0.2, delay: Math.min(delay, 0.08), ease: "easeOut" }}
       custom={y}
       data-reveal
     >

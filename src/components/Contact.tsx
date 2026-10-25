@@ -157,7 +157,7 @@ export function Contact() {
                 href={`https://wa.me/${APP_CONFIG.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-extrabold text-emerald-700 shadow-lg transition hover:scale-105"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-extrabold text-emerald-700 shadow-lg transition hover:bg-zinc-50 dark:hover:bg-zinc-800"
               >
                 <WhatsAppIcon className="h-5 w-5 text-emerald-600" />
                 {t("common.joinNow")}

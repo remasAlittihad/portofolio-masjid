@@ -182,7 +182,7 @@ export function Organization() {
                     <PersonPhoto
                       src={person.image_url}
                       alt={person.name}
-                      boxClassName="h-24 w-24 rounded-lg transition group-hover:scale-105"
+                      boxClassName="h-24 w-24 rounded-lg"
                       imageClassName="object-cover"
                     />
                     <span

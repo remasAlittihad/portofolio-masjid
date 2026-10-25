@@ -147,7 +147,7 @@ export function Gallery() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition duration-500 group-hover:scale-110"
+                  className="object-cover transition-opacity duration-200 group-hover:opacity-90"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent opacity-80 transition group-hover:opacity-95" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-4 text-start">

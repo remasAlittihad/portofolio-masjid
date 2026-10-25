@@ -116,15 +116,12 @@ export function Schedule() {
               </div>
 
               <ul className="mt-5 flex flex-col gap-2.5">
-                {PRAYER_ROWS.map(({ key, labelKey, icon: Icon }, i) => {
+                {PRAYER_ROWS.map(({ key, labelKey, icon: Icon }) => {
                   const activeRow = next?.key === key;
                   return (
                     <motion.li
                       key={key}
-                      initial={{ opacity: 0, x: -18 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: i * 0.07 }}
+                      initial={false}
                       className={`flex items-center justify-between gap-3 rounded-xl border px-4 py-3.5 transition ${
                         activeRow
                           ? "border-emerald-500 bg-linear-to-r from-emerald-600 to-emerald-500 text-white shadow-lg shadow-emerald-600/30"
@@ -150,7 +147,7 @@ export function Schedule() {
                           {timeFor(key)}
                         </span>
                         {activeRow && (
-                          <span className="h-2 w-2 animate-ping rounded-full bg-white" />
+                          <span className="h-2 w-2 rounded-full bg-white" />
                         )}
                       </span>
                     </motion.li>
@@ -207,8 +204,6 @@ export function Schedule() {
                   {units.map(({ value, label }) => (
                     <motion.div
                       key={label}
-                      animate={{ scale: [1, 1.03, 1] }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                       className="rounded-xl bg-linear-to-b from-emerald-700 to-emerald-600 px-1 py-4 text-center text-white shadow-lg shadow-emerald-900/30"
                     >
                       <div className="text-2xl font-extrabold tabular-nums sm:text-3xl">
